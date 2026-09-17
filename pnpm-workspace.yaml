@@ -1,2 +1,5 @@
 allowBuilds:
-  '@biomejs/biome': set this to true or false
+  '@biomejs/biome': true
+minimumReleaseAgeExclude:
+  - framer-motion@13.4.0
+  - motion@13.4.0
