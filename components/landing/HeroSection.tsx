@@ -218,7 +218,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative overflow-hidden pt-28 pb-14 md:pt-36 md:pb-20 lg:pt-40"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-20 pb-4 sm:pt-24 sm:pb-6"
       aria-label="Hero"
     >
       {/* Dynamic Animated Tech Grid Pattern */}
@@ -226,13 +226,13 @@ export default function HeroSection() {
 
       {/* Ambient Glowing Energy Spheres */}
       <div className="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[480px] w-[750px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-blue-600/20 via-indigo-500/15 to-cyan-400/20 blur-3xl animate-pulse [animation-duration:8s]" />
-      <div className="pointer-events-none absolute top-1/4 -left-36 -z-10 h-80 w-80 rounded-full bg-blue-600/15 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/3 -right-36 -z-10 h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/4 -left-20 sm:-left-36 -z-10 h-80 w-80 rounded-full bg-blue-600/15 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 -right-20 sm:-right-36 -z-10 h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
 
       {/* Floating Ambient Telemetry Badges (Desktop Only) */}
       <div
         ref={floatBadge1}
-        className="pointer-events-none hidden xl:flex absolute top-36 left-2 items-center gap-2.5 rounded-2xl border border-blue-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-blue-500/10 backdrop-blur-md"
+        className="pointer-events-none hidden xl:flex absolute top-24 left-4 2xl:left-12 items-center gap-2.5 rounded-2xl border border-blue-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-blue-500/10 backdrop-blur-md"
       >
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
           <Landmark className="h-4 w-4" />
@@ -248,7 +248,7 @@ export default function HeroSection() {
 
       <div
         ref={floatBadge2}
-        className="pointer-events-none hidden xl:flex absolute top-40 right-2 items-center gap-2.5 rounded-2xl border border-cyan-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-cyan-500/10 backdrop-blur-md"
+        className="pointer-events-none hidden xl:flex absolute top-28 right-4 2xl:right-12 items-center gap-2.5 rounded-2xl border border-cyan-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-cyan-500/10 backdrop-blur-md"
       >
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-50 text-cyan-600">
           <Radio className="h-4 w-4" />
@@ -264,7 +264,7 @@ export default function HeroSection() {
 
       <div
         ref={floatBadge3}
-        className="pointer-events-none hidden xl:flex absolute bottom-56 left-4 items-center gap-2.5 rounded-2xl border border-indigo-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-indigo-500/10 backdrop-blur-md"
+        className="pointer-events-none hidden xl:flex absolute top-[52%] left-4 2xl:left-12 items-center gap-2.5 rounded-2xl border border-indigo-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-indigo-500/10 backdrop-blur-md"
       >
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
           <Lock className="h-4 w-4" />
@@ -277,27 +277,29 @@ export default function HeroSection() {
 
       <div
         ref={floatBadge4}
-        className="pointer-events-none hidden xl:flex absolute bottom-52 right-4 items-center gap-2.5 rounded-2xl border border-emerald-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-emerald-500/10 backdrop-blur-md"
+        className="pointer-events-none hidden xl:flex absolute top-[50%] right-4 2xl:right-12 items-center gap-2.5 rounded-2xl border border-emerald-200/80 bg-white/80 px-3.5 py-2 shadow-lg shadow-emerald-500/10 backdrop-blur-md"
       >
         <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
           <Activity className="h-4 w-4" />
         </div>
         <div>
-          <p className="text-[11px] font-bold text-slate-900 leading-tight">High-Availability ERP</p>
+          <p className="text-[11px] font-bold text-slate-900 leading-tight">
+            High-Availability ERP
+          </p>
           <p className="text-[10px] font-semibold text-emerald-600">99.98% Live SLA Uptime</p>
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-4 text-center">
+      <div className="relative mx-auto w-full max-w-5xl px-4 text-center">
         {/* Unified Luminous Trust Capsule */}
-        <div ref={badgeRef} className="mx-auto mb-6 inline-block">
-          <div className="group inline-flex items-center gap-2.5 rounded-full border border-blue-300/80 bg-gradient-to-r from-blue-50/95 via-indigo-50/80 to-cyan-50/95 px-4 py-1.5 shadow-sm transition-all hover:scale-105 hover:border-blue-400 hover:shadow-md">
+        <div ref={badgeRef} className="mx-auto mb-3 sm:mb-4 inline-block">
+          <div className="group inline-flex items-center gap-2 rounded-full border border-blue-300/80 bg-gradient-to-r from-blue-50/95 via-indigo-50/80 to-cyan-50/95 px-3.5 py-1 shadow-xs transition-all hover:scale-105 hover:border-blue-400 hover:shadow-md">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <ShieldCheck className="h-4 w-4 text-blue-700" />
-            <span className="text-xs font-bold text-slate-800 tracking-tight">
+            <ShieldCheck className="h-3.5 w-3.5 text-blue-700" />
+            <span className="text-[11px] sm:text-xs font-bold text-slate-800 tracking-tight">
               GeM Registered • ISO Certified Govt & Enterprise IT Solutions
             </span>
-            <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-100/90 px-2 py-0.5 rounded-full">
+            <span className="hidden sm:inline-block text-[10px] sm:text-[11px] font-bold text-blue-700 bg-blue-100/90 px-2 py-0.5 rounded-full">
               Mohali, Punjab
             </span>
           </div>
@@ -306,15 +308,15 @@ export default function HeroSection() {
         {/* Dynamic Animated Headline */}
         <h1
           ref={headingRef}
-          className="mx-auto max-w-4xl text-3xl font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.12]"
+          className="mx-auto max-w-4xl text-2xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[52px] leading-[1.12]"
         >
           <span>Innovative Thoughts.</span>
           <br className="hidden sm:inline" />
-          <span className="relative inline-block mt-2 sm:mt-1">
+          <span className="relative inline-block mt-1 sm:mt-0.5">
             <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-600 bg-clip-text text-transparent">
               Mission-Critical Solutions
             </span>
-            <span className="block text-xl sm:text-2xl md:text-3xl font-bold text-slate-600 mt-1 h-9 sm:h-10 overflow-hidden">
+            <span className="block text-base sm:text-xl md:text-2xl font-bold text-slate-600 mt-0.5 sm:mt-1 h-7 sm:h-8 overflow-hidden">
               <span className="text-slate-500 font-medium">Powering </span>
               <span
                 className={`inline-block text-blue-700 font-extrabold transition-all duration-300 transform ${
@@ -332,21 +334,23 @@ export default function HeroSection() {
         {/* Supporting Punchy Copy */}
         <p
           ref={descRef}
-          className="mx-auto mt-5 max-w-2xl text-sm sm:text-base md:text-lg text-slate-600 font-normal leading-relaxed"
+          className="mx-auto mt-2.5 sm:mt-3 max-w-2xl text-xs sm:text-sm md:text-base text-slate-600 font-normal leading-relaxed"
         >
-          Veritos Infosolutions unites data, people, and cryptographic engineering. We deliver verified e-Governance platforms, university examination engines, and enterprise cloud ERP with zero-leak security.
+          Veritos Infosolutions unites data, people, and cryptographic engineering. We deliver
+          verified e-Governance platforms, university examination engines, and enterprise cloud ERP
+          with zero-leak security.
         </p>
 
         {/* Primary Interactive CTAs */}
         <div
           ref={ctaRef}
           aria-label="Call to action buttons"
-          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          className="mt-4 sm:mt-5 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-3.5"
         >
           <Link href="#solutions">
             <Button
               size="lg"
-              className="group relative cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 px-7 py-6 text-sm font-bold text-white shadow-xl shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02] hover:from-blue-800 hover:to-indigo-700 hover:shadow-2xl hover:shadow-blue-600/40"
+              className="group relative cursor-pointer overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02] hover:from-blue-800 hover:to-indigo-700 hover:shadow-xl hover:shadow-blue-600/40"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <span>Explore Interactive Command Center</span>
@@ -359,7 +363,7 @@ export default function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="cursor-pointer rounded-2xl border-slate-300/90 bg-white/90 px-6 py-6 text-sm font-bold text-slate-800 shadow-xs backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-50/60 hover:text-blue-700 hover:shadow-md"
+              className="cursor-pointer rounded-xl sm:rounded-2xl border-slate-300/90 bg-white/90 px-4 sm:px-5 py-4 sm:py-5 text-xs sm:text-sm font-bold text-slate-800 shadow-2xs backdrop-blur-md transition-all duration-200 hover:border-blue-500 hover:bg-blue-50/60 hover:text-blue-700 hover:shadow-xs"
             >
               <PhoneCall className="mr-2 h-4 w-4 text-blue-600" />
               <span>Talk to Solution Architect</span>
@@ -368,20 +372,20 @@ export default function HeroSection() {
         </div>
 
         {/* Live System Operational Telemetry Bar */}
-        <div ref={statusRef} className="mx-auto mt-8 inline-block">
-          <div className="flex flex-wrap items-center justify-center gap-3 rounded-full border border-slate-200/90 bg-white/80 px-4 py-2 text-xs font-semibold text-slate-700 shadow-xs backdrop-blur-md">
+        <div ref={statusRef} className="mx-auto mt-3.5 sm:mt-4 inline-block">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 rounded-full border border-slate-200/90 bg-white/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-2xs backdrop-blur-md">
             <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-emerald-500 animate-pulse" />
               ALL NODES OPERATIONAL
             </span>
             <span className="text-slate-300">•</span>
             <span className="flex items-center gap-1 text-slate-600">
-              <Zap className="h-3.5 w-3.5 text-blue-600" />
+              <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-blue-600" />
               Avg API Response: <strong className="font-mono text-slate-900">18ms</strong>
             </span>
             <span className="text-slate-300">•</span>
             <span className="flex items-center gap-1 text-slate-600">
-              <Lock className="h-3.5 w-3.5 text-indigo-600" />
+              <Lock className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-indigo-600" />
               Cryptography: <strong className="font-mono text-slate-900">SHA-256 + RSA</strong>
             </span>
           </div>
@@ -390,54 +394,54 @@ export default function HeroSection() {
         {/* Interactive Glowing Metric Cards */}
         <div
           ref={metricsRef}
-          className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4"
+          className="mx-auto mt-4 sm:mt-6 grid max-w-4xl grid-cols-2 gap-2.5 sm:gap-3.5 sm:grid-cols-4"
         >
           {metrics.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="group relative flex flex-col items-center justify-center rounded-2xl border border-slate-200/90 bg-white/80 p-5 text-center shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/10 cursor-default overflow-hidden"
+                className="group relative flex flex-col items-center justify-center rounded-xl sm:rounded-2xl border border-slate-200/90 bg-white/80 p-3 sm:p-4 text-center shadow-xs backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 cursor-default overflow-hidden"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                  <Icon className="h-4 w-4" />
+                <div className="mb-1 sm:mb-1.5 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg sm:rounded-xl bg-blue-50 text-blue-700 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                  <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </div>
-                <span className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl lg:text-4xl group-hover:text-blue-700 transition-colors">
+                <span className="text-lg sm:text-2xl lg:text-3xl font-black tracking-tight text-slate-900 group-hover:text-blue-700 transition-colors">
                   {item.value}
                 </span>
-                <span className="mt-1 text-xs font-bold text-slate-700 sm:text-sm">
+                <span className="mt-0.5 text-[10px] sm:text-xs font-bold text-slate-700">
                   {item.label}
                 </span>
-                <span className="mt-0.5 text-[11px] font-medium text-slate-500">
+                <span className="mt-0.5 text-[9px] sm:text-[10px] font-medium text-slate-500">
                   {item.subtext}
                 </span>
               </div>
             );
           })}
         </div>
+      </div>
 
-        {/* Core Solutions Marquee Ribbon */}
-        <div
-          className="relative mt-12 overflow-hidden py-3"
-          role="region"
-          aria-label="Core Solutions Marquee"
-        >
-          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-background via-background/80 to-transparent sm:w-36" />
-          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 bg-gradient-to-l from-background via-background/80 to-transparent sm:w-36" />
+      {/* Core Solutions Marquee Ribbon (Full Bleed 100% Width) */}
+      <div
+        className="relative w-full mt-4 sm:mt-6 overflow-hidden py-1.5 sm:py-2"
+        role="region"
+        aria-label="Core Solutions Marquee"
+      >
+        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-16 bg-gradient-to-r from-background via-background/80 to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-16 bg-gradient-to-l from-background via-background/80 to-transparent sm:w-32" />
 
-          <Marquee pauseOnHover className="[--duration:30s]">
-            {sectorTags.map((tag, idx) => (
-              <div
-                key={`${tag}-${idx}`}
-                className="mx-2 flex items-center gap-2 rounded-full border border-slate-200 bg-white/95 px-4 py-2 text-xs font-semibold text-slate-700 shadow-xs transition-all hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 hover:scale-105"
-              >
-                <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" />
-                <span>{tag}</span>
-              </div>
-            ))}
-          </Marquee>
-        </div>
+        <Marquee pauseOnHover className="[--duration:30s]">
+          {sectorTags.map((tag, idx) => (
+            <div
+              key={`${tag}-${idx}`}
+              className="mx-1.5 sm:mx-2 flex items-center gap-1.5 sm:gap-2 rounded-full border border-slate-200 bg-white/95 px-3 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-2xs transition-all hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 hover:scale-105"
+            >
+              <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-blue-600" />
+              <span>{tag}</span>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </section>
   );

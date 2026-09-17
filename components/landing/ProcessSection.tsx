@@ -22,10 +22,8 @@ interface processType {
 }
 
 const ProcessCards: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const slidesRef = useRef<HTMLDivElement[]>([]);
   const headingRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const process: processType[] = [
     {
@@ -82,82 +80,33 @@ const ProcessCards: React.FC = () => {
     },
   ];
 
-  useGSAP(() => {
-    const slides = slidesRef.current;
-    if (!slides.length || !headingRef.current || !sectionRef.current) return;
-
-    const headerPin = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top 8%",
-      endTrigger: slidesRef.current[slidesRef.current.length - 2],
-      end: "center top",
-      pin: headingRef.current,
-      pinSpacing: false,
-      anticipatePin: 1,
-    });
-
-    slides.slice(0, 3).forEach((slide) => {
-      if (!slide) return;
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: slide,
-          start: "top 25%",
-          end: "bottom top",
-          scrub: 1,
-          pin: true,
-          pinSpacing: false,
-          anticipatePin: 1,
-        },
-      });
-
-      tl.to(slide, {
-        scale: 0.7,
-        z: -80,
-        rotationX: 10,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power2.inOut",
-      });
-    });
-
-    const updatePinning = () => {
-      const isMobile = window.innerWidth < 1024;
-      if (isMobile) {
-        headerPin.disable();
-      } else {
-        headerPin.enable();
+  useGSAP(
+    () => {
+      if (headingRef.current) {
+        gsap.effects.fadeUpOnScroll(headingRef.current, {
+          start: "top 80%",
+          duration: 0.8,
+          markers: false,
+        });
       }
-    };
 
-    if (headingRef.current) {
-      gsap.effects.fadeUpOnScroll(headingRef.current, {
-        start: "top 80%",
-        duration: 0.8,
-        markers: false,
-      });
-    }
-
-    updatePinning();
-    window.addEventListener("resize", updatePinning);
-
-    return () => {
-      headerPin.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      window.removeEventListener("resize", updatePinning);
-    };
-  }, []);
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
       id="process"
       ref={sectionRef}
-      className="relative mx-auto max-w-6xl px-4 py-24 md:py-32"
+      className="relative mx-auto max-w-6xl px-4 py-20 md:py-28"
       aria-labelledby="process-heading"
     >
       <div className="flex flex-col gap-12 lg:flex-row lg:items-start">
-        {/* Left Pinned Heading */}
-        <div ref={headingRef} className="lg:w-5/12 lg:pr-8">
+        {/* Left Sticky Heading */}
+        <div ref={headingRef} className="lg:sticky lg:top-28 lg:w-5/12 lg:pr-8 self-start">
           <SectionHeading
             badge="Proven Methodology"
             heading="Our Mission-Critical Execution Lifecycle"
@@ -181,16 +130,16 @@ const ProcessCards: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Stacking Cards */}
-        <div ref={containerRef} className="space-y-12 lg:w-7/12">
+        {/* Right Stacking Overlap Cards */}
+        <div className="relative flex flex-col lg:w-7/12 pb-8">
           {process.map((item, index) => (
             <div
-              key={index}
-              ref={(el) => {
-                if (el) slidesRef.current[index] = el;
+              key={item.step}
+              className="sticky mb-12 sm:mb-16 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-xl shadow-slate-900/5 transition-all duration-300 last:mb-0 md:p-8"
+              style={{
+                top: `calc(6.5rem + ${index * 1.75}rem)`,
+                zIndex: index + 1,
               }}
-              className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-6 shadow-xl shadow-slate-900/5 transition-all duration-300 md:p-8"
-              style={{ transformOrigin: "center top" }}
             >
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                 <span className="text-3xl font-black text-blue-600 sm:text-4xl">
@@ -218,8 +167,8 @@ const ProcessCards: React.FC = () => {
                   Deliverables & Milestones:
                 </p>
                 <ul className="space-y-2">
-                  {item.deliverables.map((d, dIdx) => (
-                    <li key={dIdx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                  {item.deliverables.map((d) => (
+                    <li key={d.item} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
                       <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 shrink-0" />
                       <span>{d.item}</span>
                     </li>
